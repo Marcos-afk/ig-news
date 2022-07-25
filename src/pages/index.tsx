@@ -1,8 +1,13 @@
+import Head from 'next/head';
+
 const Home = () => {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Inicio | ig.news</title>
+      </Head>
       <h1>Olá mundo</h1>
-    </div>
+    </>
   );
 };
 
