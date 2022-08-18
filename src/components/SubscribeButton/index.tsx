@@ -1,15 +1,20 @@
 import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripe-js';
 import styles from './styles.module.scss';
-import { SubscribeButtonProps } from './types/SubscribeButtonProps';
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-export const SubscribeButton = ({ priceId }: SubscribeButtonProps) => {
+export const SubscribeButton = () => {
   const { data: Session } = useSession();
+  const router = useRouter();
   const handleSubscribe = async () => {
     if (!Session) {
       signIn('github');
+      return;
+    }
+
+    if (Session.activeSubscription) {
+      router.push('/posts');
       return;
     }
 
