@@ -22,7 +22,7 @@ const Home = ({ product }: HomeProps) => {
             Get access to all the publications <br />
             <span>for {product.amount} month</span>
           </p>
-          <SubscribeButton priceId={product.priceId} />
+          <SubscribeButton />
         </section>
         <Image src="/images/avatar.svg" alt="avatar" width={500} height={500} />
       </main>
